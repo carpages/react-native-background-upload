@@ -155,12 +155,13 @@ Returns a promise with the string ID of the upload.  Will reject if there is a c
 |`parameters`|object|Optional||Additional form fields to include in the HTTP request. Only used when `type: 'multipart`||
 |`notification`|Notification object (see below)|Optional||Android only.  |`{ enabled: true, onProgressTitle: "Uploading...", autoClear: true }`|
 
-### Notification Object
+### Notification Object (Android Only)
 |Name|Type|Required|Description|Example|
 |---|---|---|---|---|
 |`enabled`|boolean|Optional|Enable or diasable notifications|`{ enabled: true }`|
 |`autoClear`|boolean|Optional|Autoclear notification on complete|`{ autoclear: true }`|
 |`notificationChannel`|string|Optional|Sets android notificaion channel|`{ notificationChannel: "My-Upload-Service" }`|
+|`enableRingTone`|boolean|Optional|Sets whether or not to enable the notification sound when the upload gets completed with success or error|`{ enableRingTone: true }`|
 |`onProgressTitle`|string|Optional|Sets notification progress title|`{ onProgressTitle: "Uploading" }`|
 |`onProgressMessage`|string|Optional|Sets notification progress message|`{ onProgressMessage: "Uploading new video" }`|
 |`onCompleteTitle`|string|Optional|Sets notification complete title|`{ onCompleteTitle: "Upload finished" }`|
@@ -204,6 +205,8 @@ Adds an event listener, possibly confined to a single upload.
 `uploadId` The upload ID from `startUpload` to filter events for.  If null, this will include all uploads.
 
 `listener` Function to call when the event occurs.
+
+Returns an [EventSubscription](https://github.com/facebook/react-native/blob/master/Libraries/vendor/emitter/EmitterSubscription.js). To remove the listener, call `remove()` on the `EventSubscription`.
 
 ## Events
 
